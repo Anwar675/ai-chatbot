@@ -1,14 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { useWindowSize } from "usehooks-ts";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, VercelIcon } from "./icons";
+import { PlusIcon } from "./icons"; // Xóa VercelIcon nếu không dùng
 import { useSidebar } from "./ui/sidebar";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"; // Giả sử bạn dùng shadcn/ui Dialog
+import { CalendlyInline } from "./elements/calendy-inline";
 
 function PureChatHeader({
   chatId,
@@ -21,7 +27,9 @@ function PureChatHeader({
 }) {
   const router = useRouter();
   const { open } = useSidebar();
+  const [showCalendly, setShowCalendly] = useState(false);
 
+  const calendlyUrl = "https://calendly.com/doanthienan54/new-meeting"; 
   const { width: windowWidth } = useWindowSize();
 
   return (
@@ -50,19 +58,26 @@ function PureChatHeader({
         />
       )}
 
-      <Button
-        asChild
-        className="order-3 hidden bg-zinc-900 px-2 text-zinc-50 hover:bg-zinc-800 md:ml-auto md:flex md:h-fit dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
-      >
-        <Link
-          href={"https://vercel.com/templates/next.js/nextjs-ai-chatbot"}
-          rel="noreferrer"
-          target="_noblank"
+      <div className="relative order-3 md:ml-auto">
+        <Button
+          variant="outline"
+          className="h-8 px-2"
+          onClick={() => setShowCalendly(true)}
         >
-          <VercelIcon size={16} />
-          Deploy with Vercel
-        </Link>
-      </Button>
+          📅 Đặt lịch
+        </Button>
+
+        <Dialog open={showCalendly} onOpenChange={setShowCalendly}>
+          <DialogContent className="max-w-4xl w-[95vw] h-[90vh] p-0 sm:max-w-[90vw]">
+            <DialogHeader className="p-4 border-b">
+              <DialogTitle>Đặt lịch tư vấn với chuyên gia - CareMe</DialogTitle>
+            </DialogHeader>
+            <div className="flex-1 overflow-hidden">
+              <CalendlyInline url={calendlyUrl} onClose={() => setShowCalendly(false)} />
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
     </header>
   );
 }

@@ -82,6 +82,7 @@
     "prosemirror-view": "^1.34.3",
     "radix-ui": "^1.4.3",
     "react": "19.0.1",
+    "react-calendly": "^4.4.0",
     "react-data-grid": "7.0.0-beta.47",
     "react-dom": "19.0.1",
     "react-resizable-panels": "^2.1.7",

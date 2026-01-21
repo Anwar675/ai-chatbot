@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Greeting = () => {
   return (
@@ -6,6 +7,7 @@ export const Greeting = () => {
       className="mx-auto mt-4 flex size-full max-w-3xl flex-col justify-center px-4 md:mt-16 md:px-8"
       key="overview"
     >
+      
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         className="font-semibold text-xl md:text-2xl"
@@ -13,7 +15,7 @@ export const Greeting = () => {
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.5 }}
       >
-        Hello there!
+        Care Me!
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}
@@ -22,8 +24,9 @@ export const Greeting = () => {
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.6 }}
       >
-        How can I help you today?
+         Tôi có thể hỗ trợ tinh thần gì cho bạn?
       </motion.div>
+      <Image src="https://fmhyfuljru76pctd.public.blob.vercel-storage.com/backgorun-4g0CFfymeRQZvAPc2uVtTHhDZRgwQC.jpg" width={300} height={200} alt="test"/>
     </div>
   );
 };

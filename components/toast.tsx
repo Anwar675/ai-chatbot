@@ -70,6 +70,7 @@ function Toast(props: ToastProps) {
 
 type ToastProps = {
   id: string | number;
+  title?: string;
   type: "success" | "error";
-  description: string;
+  description?: ReactNode;
 };
