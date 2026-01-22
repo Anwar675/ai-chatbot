@@ -61,7 +61,7 @@ function PureChatHeader({
       <div className="relative order-3 md:ml-auto">
         <Button
           variant="outline"
-          className="h-8 px-2"
+          className="h-8 px-4 py-2 cursor-pointer border-2 "
           onClick={() => setShowCalendly(true)}
         >
           📅 Đặt lịch
